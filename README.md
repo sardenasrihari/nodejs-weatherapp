@@ -66,9 +66,33 @@ app.listen(3000, function () {
 * Expose this fule with express by adding line to server.js:
 `app.use(express.static('public'));`
 
+* Set up POST route:
+```javascript
+app.post('/', function (req, res) {
+  res.render('index');
+})
+```
 
+* install Middleware: `npm install body-parser --save`
 
+* Edit server.js to add middleware:
+```javascript
+const bodyParser = require('body-parser');
+// ...
+app.use(bodyParser.urlencoded({ extended: true }));
+```
 
+* In server.js - log city to the console (add to existing post):
+```javascript
+app.post('/', function (req, res) {
+  res.render('index');
+  console.log(req.body.city);
+})
+```
+
+* Test it (to make sure city shows in console): `node server.js`
+
+* http://localhost:3000/
 
 
 
